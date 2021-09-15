@@ -3,3 +3,5 @@ venv
 downloads
 __pycache__
 build
+dist
+digital_ocean_spaces.egg-info
