@@ -19,6 +19,8 @@ Alternatively, if you want to stay in the console and use verbose commands, you 
 ### INSTALL
 ```console
 Console
+$ pip install digital-ocean-spaces
+or...
 $ pip install git+git@github.com:ChariotDev/digital-ocean-spaces.git
 ```
 
@@ -148,6 +150,10 @@ Client.shell(self)
 ```
 
 ## CHANGELOG
+
+### 0.1.1
+- Documentation
+
 ### 0.1.0
 - Initial release
 
