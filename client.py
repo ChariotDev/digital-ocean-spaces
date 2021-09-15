@@ -1,11 +1,11 @@
-from io import RawIOBase
 from pyaml import yaml
 import os
 import fernet
 import boto3
 import time
 from pathlib import Path
-from .utils import shell
+import sys; sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+from utils import shell
 
 regions = ['ams3', 'fra1', 'nyc3', 'sgp1', 'sfo2', 'sfo3']
 
@@ -85,7 +85,7 @@ class Client:
         # Check if key provided, else fetch from env.yaml
         if not public_key or not secret_key:
             try:
-                with open("env.yaml", 'r') as stream:
+                with open("./env.yaml", 'r') as stream:
                     env = yaml.safe_load(stream)
                 public_key = env['public_key']
                 secret_key = env['secret_key']

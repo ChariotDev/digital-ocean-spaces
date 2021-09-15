@@ -23,7 +23,7 @@ setup(
     author="Jody Doolittle <https://chariot-dev.com>",
     license="MIT",
     url="https://github.com/ChariotDev/digital-ocean-spaces",
-    description = 'A client for Digital Ocean Spaces with a built in shell.',
+    description = 'An MIT licensed python client for Digital Ocean Spaces with a built in shell.',
     long_description = open('README.md').read(),
     long_description_content_type='text/markdown',
     packages=['digital_ocean_spaces'],
