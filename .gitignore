@@ -1,0 +1,5 @@
+env.yaml
+venv
+downloads
+__pycache__
+build
