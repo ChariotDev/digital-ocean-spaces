@@ -12,8 +12,8 @@ regions = ['ams3', 'fra1', 'nyc3', 'sgp1', 'sfo2', 'sfo3']
 # EXCEPTIONS
 no_keys = (
     """
-    API keys have not been provided.
-    A) Use client(..., public_key, secret_key) or,
+    No space_name or API keys have been provided.
+    A) Use client(space_name, public_key, secret_key) or,
     B) Supply env.yaml properly, template provided in base directory.
     """
 )
@@ -81,14 +81,17 @@ def sort_files(all_files, dir, type=None):
     return files
 
 class Client:
-    def __init__(self, region_name, space_name=None, public_key=None, secret_key=None):
+    def __init__(self, region_name=None, space_name=None, public_key=None, secret_key=None):
         # Check if key provided, else fetch from env.yaml
-        if not public_key or not secret_key:
+
+        if not region_name or not public_key or not secret_key:
             try:
                 with open("./env.yaml", 'r') as stream:
                     env = yaml.safe_load(stream)
+                region_name = env['region_name']
                 public_key = env['public_key']
                 secret_key = env['secret_key']
+                space_name = env.get('default_space_name')
             except FileNotFoundError:
                 print('Exception: [FileNotFoundError]' + no_keys)
             except KeyError:
@@ -97,8 +100,8 @@ class Client:
                 pass
 
         # Quit if no keys
-        if not public_key or not secret_key:
-            return
+        if not region_name or not public_key or not secret_key:
+            raise Exception('[Raised]' + no_keys)
 
         self.public_key = public_key
         self.secret_key = secret_key

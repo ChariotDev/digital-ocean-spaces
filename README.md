@@ -1,4 +1,4 @@
-# digital_ocean_spaces
+# digital-ocean-spaces
 An MIT licensed python client for Digital Ocean Spaces with a built in shell
 
 ## TLDR
@@ -8,7 +8,7 @@ It has a built in terminal shell for verbose commands and navigation, <- Not yet
 ## ABOUT
 Inspired by [Python3-DigitalOcean-Spaces-Manager-v2-Advanced](https://github.com/Mashoud123/Python3-DigitalOcean-Spaces-Manager-v2-Advanced). An API client was needed for a commercial project and that package was the best contender. Abandoned, riddled with issues and lacking any license for distro and modificaiton, digital_ocean_spaces was built from scratch with an MIT license. Use it, share it and most of all, feel free to modify it, and contribute back.
 
-The digital_ocean_spaces package provides a nearly stress free 'Client' class to help you connect to Digital Ocean spaces. All it needs is your keys and the name of the server to connect to. Once authorized, the client will hopefuly help you figure out what you're doing wrong.
+The digital-ocean-spaces package provides a nearly stress free 'Client' class that boto3 to help you connect to Digital Ocean spaces. All it needs is your keys and the name of the server to connect to. Once authorized, the client will hopefuly help you figure out what you're doing wrong.
 
 Once you have an authorized client ( server name, public key, secret key,) you should be able to implement it into your existing application like normal.
 
@@ -27,13 +27,16 @@ $ pip install git+git@github.com:ChariotDev/digital-ocean-spaces.git
 ### USE EXAMPLE
 ```py
 # main.py
-from digital_ocean_spaces import Client
+from spaces import Client
 
 client = Client(
   region_name = 'sfo3', # Required
-  space_name = 'my_media', # Optional, can be updated with <client>.set_space(space_name)
-  public_key = 'foo', # Optional, can set key in digital_ocean_spaces/env.yaml                                                                         
-  secret_key = 'bar', # Optional, can set key in digital_ocean_spaces/env.yaml
+  space_name = 'my_media', # Optional, can be set in spaces/env.yaml and/or be updated with <client>.set_space(space_name)
+  public_key = 'foo', # Required, but can set key in spaces/env.yaml                                                                         
+  secret_key = 'bar', # Required, but can set key in spaces/env.yaml
+
+  # If region_name, public_key or secret_key are not provided, Client will override all values
+
 )
 ```
 
@@ -109,6 +112,11 @@ $ client.shell()
 ### CLIENT FUNCTIONS
 
 ```py
+# Creates a Client object
+Client<.__init__>(self, region_name=None, space_name=None, public_key=None, secret_key=None)
+```
+
+```py
 # Updates and stores available spaces
 Client.refresh_spaces()
 ```
@@ -150,6 +158,11 @@ Client.shell(self)
 ```
 
 ## CHANGELOG
+
+### 0.1.2
+- Add region name field to env.yaml
+- Add default space field to env.yaml
+- Renamed import module to spaces for simplicity
 
 ### 0.1.1
 - Documentation

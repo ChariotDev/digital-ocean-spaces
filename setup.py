@@ -18,17 +18,17 @@ install_reqs = parse_requirements('requirements.txt')
 reqs = install_reqs
 
 setup(
-    name='digital_ocean_spaces',
-    version='0.1.1',
+    name='digital-ocean-spaces',
+    version='0.1.2',
     author='Jody Doolittle <https://chariot-dev.com>',
     license='MIT',
     url='https://github.com/ChariotDev/digital-ocean-spaces',
     description = 'An MIT licensed python client for Digital Ocean Spaces with a built in shell.',
     long_description = open('README.md').read(),
     long_description_content_type='text/markdown',
-    packages=['digital_ocean_spaces'],
-    package_dir={'digital_ocean_spaces': ''},
-    package_data={'digital_ocean_spaces': [
+    packages=['spaces'],
+    package_dir={'spaces': ''},
+    package_data={'spaces': [
         '*.py',
         'README.md',
         'LICENSE',

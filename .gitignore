@@ -5,3 +5,4 @@ __pycache__
 build
 dist
 digital_ocean_spaces.egg-info
+setup.pyc
