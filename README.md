@@ -159,6 +159,9 @@ Client.shell(self)
 
 ## CHANGELOG
 
+### 0.1.3
+- Fixed requirements.txt
+
 ### 0.1.2
 - Add region name field to env.yaml
 - Add default space field to env.yaml

@@ -19,7 +19,7 @@ reqs = install_reqs
 
 setup(
     name='digital-ocean-spaces',
-    version='0.1.2',
+    version='0.1.3',
     author='Jody Doolittle <https://chariot-dev.com>',
     license='MIT',
     url='https://github.com/ChariotDev/digital-ocean-spaces',
@@ -30,6 +30,7 @@ setup(
     package_dir={'spaces': ''},
     package_data={'spaces': [
         '*.py',
+        '*.txt'
         'README.md',
         'LICENSE',
         '*.template',
