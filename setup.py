@@ -1,8 +1,8 @@
 import os
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
-    from distutils.core import setup
+    from distutils.core import setup, find_packages
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
@@ -19,7 +19,7 @@ reqs = install_reqs
 
 setup(
     name='digital-ocean-spaces',
-    version='0.1.3',
+    version='0.1.5',
     author='Jody Doolittle <https://chariot-dev.com>',
     license='MIT',
     url='https://github.com/ChariotDev/digital-ocean-spaces',
@@ -29,12 +29,14 @@ setup(
     packages=['spaces'],
     package_dir={'spaces': ''},
     package_data={'spaces': [
-        '*.py',
-        '*.txt'
-        'README.md',
+        '__init__.py',
+        'client.py',
         'LICENSE',
         '*.template',
-        'utils/*.py'
-        ]},
+        'utils/*.py',
+        "*.txt",
+        "*.md"
+        ],
+        },
     install_requires=reqs,
 )
