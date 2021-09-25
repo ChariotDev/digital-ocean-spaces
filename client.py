@@ -125,6 +125,7 @@ class Client:
 
         if space_name:
             self.set_space(space_name)
+            self.refresh_files()
 
     def __str__(self):
         return f"Digital Ocean Spaces <Client: {self.region}/{self.space}>"
@@ -173,7 +174,7 @@ class Client:
         self.space_files = self.session.list_objects(Bucket=self.space).get('Contents')
         return True
 
-    def list_dirs(self, space_name=None, string=False, dir=''):
+    def list_dirs(self, path='', space_name=None, string=False, ):
         """
         Lists only directories.
         """
@@ -195,7 +196,7 @@ class Client:
         response += "\n=========="
         return response
 
-    def list_files(self, space_name=None, string=False, dir=''):
+    def list_files(self, path='', space_name=None, string=False, ):
         """
         Lists only files.
         """
@@ -203,7 +204,7 @@ class Client:
         if not self.space_files or space_name:
             self.refresh_files(space_name)
 
-        files = sort_files(self.space_files, dir, 'file')
+        files = sort_files(self.space_files, path, 'file')
         
         if not string:
             return files
@@ -217,7 +218,7 @@ class Client:
         response += "\n=========="
         return response
 
-    def list_all(self, space_name=None, string=False, dir=''):
+    def list_all(self, path='', space_name=None, string=False ):
         """
         Lists files and directories
         """
@@ -225,7 +226,7 @@ class Client:
         if not self.space_files or space_name:
             self.refresh_files(space_name)
 
-        files = sort_files(self.space_files, dir)
+        files = sort_files(self.space_files, path)
 
         if not string:
             return files
@@ -238,7 +239,6 @@ class Client:
 
         response += "\n=========="
         return response
-        
         
     def download_file(self, file_name, destination="downloads/", space_name=None):
         """
@@ -293,9 +293,25 @@ class Client:
             toc = time.perf_counter()
             print(
                 f'Uploaded to {self.region}/{self.space} in {toc - tic:0.4f} seconds \n- Destination -> {destination}')
+            self.refresh_files()
             return True
         finally:
             pass
 
-    def shell(self):
-        shell.shell(self)
+    def delete_file(self, file_path, yes=False, space_name=None):
+        """
+        Deletes file that matches file_path exactly.
+        """
+        self.set_space(space_name)
+
+        if not yes:
+            ans = input(f"Confirm you want to delete '{file_path}'? y/N: ")
+            if ans.lower not in ['y', 'yes']:
+                return False
+
+        res = self.session.delete_object(Bucket=self.space_name, Key=file_path)
+
+        if res.get('ResponseMetadata').get('RetryAttempts') == 0:
+            return True
+        else:
+            return res
