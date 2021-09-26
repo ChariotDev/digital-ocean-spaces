@@ -51,6 +51,12 @@ cant_place_path_in_file_name = (
     """
 )
 
+cant_place_file_name_in_destination = (
+    """
+    You can not place the file name in the destination path.
+    """
+)
+
 # HELPERS
 
 def file_to_string(file, type):
@@ -267,6 +273,10 @@ class Client:
         Uploads a single file.
         """
         self.set_space(space_name)
+
+        # Check if destination contains file name
+        if os.path.basename(destination):
+            raise Exception('[Raised]' + cant_place_file_name_in_destination)
 
         # Get file name and extentions
         basename = os.path.basename(file)

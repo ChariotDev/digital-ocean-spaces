@@ -170,6 +170,13 @@ Client.shell(self)
 
 ## CHANGELOG
 
+### 0.2.2
+- added error to upload_file to prevent file name in destination path
+
+### 0.2.1
+- remove pkg-resources==0.0.0 dependency
+- rebuild requirement.txt
+
 ### 0.2.0
 - dir kwarg renamed to path, moved to the first positional arg in: list_files, list_dirs, list_all
 - space_files will populate upon client instance if space_name is supplied.
