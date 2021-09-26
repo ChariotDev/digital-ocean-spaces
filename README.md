@@ -157,7 +157,8 @@ Client.download_file(self, file_name, destination="downloads/", space_name=None)
 ```
 ```py
 # Uploads specified file
-Client.upload_file(self, file, destination="", rename=None, space_name=None)
+Client.upload_file(self, file, destination="", rename=None, space_name=None, extra_args={})
+# extra_args: see https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-uploading-files.html
 ```
 ```py
 # Deletes specified file
@@ -169,6 +170,9 @@ Client.shell(self)
 ```
 
 ## CHANGELOG
+
+### 0.2.3
+- add ExtraArgs to upload_file
 
 ### 0.2.2
 - added error to upload_file to prevent file name in destination path

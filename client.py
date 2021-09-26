@@ -268,7 +268,7 @@ class Client:
         finally:
             pass
         
-    def upload_file(self, file, destination="", rename=None, space_name=None ):
+    def upload_file(self, file, destination="", rename=None, space_name=None, extra_args={}):
         """
         Uploads a single file.
         """
@@ -299,7 +299,7 @@ class Client:
 
         try:
             tic = time.perf_counter()
-            self.session.upload_file(file, self.space, destination)
+            self.session.upload_file(file, self.space, destination, ExtraArgs=extra_args)
             toc = time.perf_counter()
             print(
                 f'Uploaded to {self.region}/{self.space} in {toc - tic:0.4f} seconds \n- Destination -> {destination}')
