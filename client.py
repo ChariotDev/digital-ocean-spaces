@@ -35,7 +35,6 @@ no_space_name = (
     Example 2: Client.list_files(space_name='sfo3')
     """
 )
-
 cant_replace_file_ext = (
     """
     You can not replace the file extention in the 'rename' kwarg.
@@ -43,14 +42,12 @@ cant_replace_file_ext = (
     Unsafe: rename = 'new_name.mp4' -> 'foo/bar/old_name.txt' -> 'foo/bar/new_name.mp4'
     """        
 )
-
 cant_place_path_in_file_name = (
     """
     You can not place the path in the 'rename' kwarg, use the 'destination' kwarg instead.
     Example: destination = 'new/path/' -> 'old/path/old_name.txt' -> 'new/path/old_name.txt'
     """
 )
-
 cant_place_file_name_in_destination = (
     """
     You can not place the file name in the destination path.
@@ -319,7 +316,7 @@ class Client:
             if ans.lower not in ['y', 'yes']:
                 return False
 
-        res = self.session.delete_object(Bucket=self.space_name, Key=file_path)
+        res = self.session.delete_object(Bucket=self.space, Key=file_path)
 
         if res.get('ResponseMetadata').get('RetryAttempts') == 0:
             return True

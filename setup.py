@@ -19,7 +19,7 @@ reqs = install_reqs
 
 setup(
     name='digital-ocean-spaces',
-    version='0.2.3',
+    version='0.2.4',
     author='Jody Doolittle <https://chariot-dev.com>',
     license='MIT',
     url='https://github.com/ChariotDev/digital-ocean-spaces',

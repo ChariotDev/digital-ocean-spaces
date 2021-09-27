@@ -171,8 +171,11 @@ Client.shell(self)
 
 ## CHANGELOG
 
+### 0.2.4
+- bugfix in delete_file
+
 ### 0.2.3
-- add ExtraArgs to upload_file
+- add extra_args to upload_file
 
 ### 0.2.2
 - added error to upload_file to prevent file name in destination path
