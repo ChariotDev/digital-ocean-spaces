@@ -172,6 +172,9 @@ Client.shell(self)
 ## CHANGELOG
 
 ### 0.2.4
+- bugfix in list_dirs
+
+### 0.2.4
 - bugfix in delete_file
 
 ### 0.2.3
