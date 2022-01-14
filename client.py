@@ -185,7 +185,7 @@ class Client:
         if not self.space_files or space_name:
             self.refresh_files(space_name)
 
-        files = sort_files(self.space_files, dir, 'directory')
+        files = sort_files(self.space_files, path, 'directory')
 
         if not string:
             return files
