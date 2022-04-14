@@ -64,7 +64,7 @@ client.list_files(
 
 ## Readable version
 print(
-  client.list_spaces
+  client.list_spaces(
     space_name=None # Optional if a space is already set
     string=True # Returns a fancy string
   )
