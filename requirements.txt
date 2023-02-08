@@ -7,7 +7,7 @@ cffi==1.14.6
 charset-normalizer==2.0.5
 click==8.0.1
 colorama==0.4.4
-cryptography==3.4.8
+cryptography==39.0.1
 docutils==0.17.1
 fernet==1.0.1
 idna==3.2
